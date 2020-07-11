@@ -1,24 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {useState } from 'react';
 import './App.css';
 import Person from './Person';
 
-class App extends Component{
-  state = {
+const App = props => {
+  const [ personsState , setpersonsState] = useState( {
      persons : [
     {name : 'Megha', age : 22},
     {name : 'Mon', age : 23}
     ]
-  }
+  });
 
-  render(){
+const [otherState , setotherState] = useState('some values');
+console.log(personsState , otherState);
+const switchHandler = () => {
+  setpersonsState({
+  persons : [
+    { name : 'Mon' , age : 23},
+    { name : 'Megha' , age : 22}
+  ]
+  });
+};  
+
     return(
       <div>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
+        <button onClick={switchHandler}>Switch Name</button> 
+        <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
+        <Person name={personsState.persons[1].name} age={personsState.persons[1].age}/>
       </div>
     )
   }
-}
 
 export default App;
