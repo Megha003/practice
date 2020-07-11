@@ -1,33 +1,33 @@
-import React, {useState } from 'react';
+import React, {useState, Component } from 'react';
 import './App.css';
-import Person from './Person';
+import UserInput from './input/UserInput'
+import UserOutput from './input/UserOutput'
 
-const App = props => {
-  const [ personsState , setpersonsState] = useState( {
-     persons : [
-    {name : 'Megha', age : 22},
-    {name : 'Mon', age : 23}
-    ]
-  });
+class App extends Component{
+  state = {
+    username : "Maxii!!!"
+  }
+    
+  userCHangeHandler = (event) =>
+{
+    this.setState({
+      username : event.target.value
+    })
+}
 
-const [otherState , setotherState] = useState('some values');
-console.log(personsState , otherState);
-const switchHandler = () => {
-  setpersonsState({
-  persons : [
-    { name : 'Mon' , age : 23},
-    { name : 'Megha' , age : 22}
-  ]
-  });
-};  
-
+  render(){
     return(
-      <div>
-        <button onClick={switchHandler}>Switch Name</button> 
-        <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
-        <Person name={personsState.persons[1].name} age={personsState.persons[1].age}/>
+       <div>
+         <UserInput changed={this.userCHangeHandler} 
+         newName= {this.state.username}/>
+         <UserOutput userName={this.state.username} 
+         newName= {this.state.username}/>
+         <UserOutput userName={this.state.username}
+         newName= {this.state.username} />
+         <UserOutput userName={this.state.username} />
       </div>
     )
   }
+}
 
 export default App;

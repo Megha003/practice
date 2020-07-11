@@ -1,0 +1,9 @@
+.userinput{
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 100px;
+    padding: 20px;
+    border: 2px solid brown;    
+    box-shadow: black 10px 3px 3px;
+    font-size: 30px;
+}
